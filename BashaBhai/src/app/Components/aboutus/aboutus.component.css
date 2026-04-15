@@ -1,0 +1,87 @@
+/* ================= HERO SECTION ================= */
+.hero-section {
+  background: url('/assets/img/im5.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+/* Overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background: rgba(0, 0, 0, 0.35); */
+  z-index: 1;
+}
+
+/* Keep content above overlay */
+.hero-section .row {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= TEXT ================= */
+.custom_h1 {
+  color: #7DA640;
+  font-family: 'Lobster', cursive;
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+.custom_p {
+  color: #171313;
+  line-height: 1.7rem;
+  margin-top: 1rem;
+  max-width: 550px;
+}
+
+/* ================= IMAGES ================= */
+.hero-img {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 992px) {
+  .custom_h1 {
+    font-size: 2.8rem;
+  }
+
+  .custom_p {
+    max-width: 100%;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+
+  .custom_h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .custom_p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .hero-img {
+    max-width: 280px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width: 480px) {
+  .custom_h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-img {
+    max-width: 240px;
+  }
+}

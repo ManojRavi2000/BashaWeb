@@ -1,0 +1,120 @@
+/* ---------- BACKGROUND ---------- */
+.background {
+  background: url('../../../assets/img/loginbk.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+}
+
+/* ---------- FLEX CONTAINER ---------- */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- SIDE IMAGES ---------- */
+.side-img {
+  width: 420px;
+  max-width: 100%;
+}
+
+/* ---------- FORM ---------- */
+.login-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #7da640;
+}
+
+/* ---------- INPUT ---------- */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* ---------- ERROR ---------- */
+.error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* ---------- BUTTON ---------- */
+.login-form button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #7da640;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+.login-form button:hover:not(:disabled) {
+  background-color: #00b35f;
+}
+
+/* ---------- LINK ---------- */
+.login-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #000;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .side-img {
+    display: none;
+  }
+
+  .background {
+    padding: 2rem 1rem;
+  }
+
+  .login-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form h2 {
+    font-size: 22px;
+  }
+
+  .login-form input {
+    font-size: 14px;
+  }
+
+  .login-form button {
+    font-size: 15px;
+  }
+}

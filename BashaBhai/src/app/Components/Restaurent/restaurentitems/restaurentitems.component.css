@@ -1,0 +1,273 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================
+   TEXT & TYPOGRAPHY
+========================= */
+.custom_p {
+    color: #666666;
+    line-height: 1.6rem;
+    margin-top: 1rem;
+    font-size: 15px;
+}
+
+.custom_h2 {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    color: #7DA640;
+    text-align: center;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.custom_primbutton,
+.card-button,
+.custom-btn {
+    background-color: #7DA640;
+    color: #FFFFFF;
+    border-radius: .4rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.custom_primbutton {
+    padding: 1rem 1.5rem;
+}
+
+.card-button {
+    padding: .6rem 1rem;
+}
+
+.custom-btn {
+    padding: .6rem 1.2rem;
+}
+
+.custom_primbutton:hover,
+.card-button:hover,
+.custom-btn:hover {
+    background-color: #ffffff;
+    color: #7DA640;
+    border: 1px solid #7DA640;
+}
+
+.card-button2 {
+    background-color: #ffffff;
+    color: #7DA640;
+    padding: .6rem 1rem;
+    border-radius: .4rem;
+    border: 1px solid #7DA640;
+}
+
+.card-button2:hover {
+    background-color: #7DA640;
+    color: #ffffff;
+}
+
+/* =========================
+   SECTION BACKGROUND
+========================= */
+.spical-section1 {
+    background: url('/assets/img/adminhomebg1.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 4rem 8rem;
+}
+
+/* =========================
+   CARDS
+========================= */
+.custom_card {
+    border: 1px solid #F5F5F5;
+    padding-bottom: 1rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.custom_card:hover {
+    border-color: #7DA640;
+}
+
+.custom_cardtitle {
+    font-size: 20px;
+    font-weight: 600;
+    padding: .3rem;
+}
+
+.custom_card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* =========================
+   PRICE
+========================= */
+.price {
+    color: #7DA640;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* =========================
+   NAV PILLS
+========================= */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: #7DA640;
+}
+
+.custom_navpill {
+    margin: 2rem 0;
+}
+
+.custom_navpill li {
+    margin: 0 .5rem;
+}
+
+.custom_navpill a {
+    color: #666666;
+    transition: color .3s;
+}
+
+.custom_navpill a:hover {
+    color: #7DA640;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal-content {
+    background: url('/assets/img/im5.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.modal-header h4,
+.modal-header h5 {
+    font-weight: 600;
+}
+
+.modal-body img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+.form-control,
+.form-select,
+textarea {
+    font-size: 15px;
+}
+
+/* =========================
+   LAYOUT HELPERS
+========================= */
+.row-with-space .col {
+    margin-bottom: 20px;
+}
+
+.scroll {
+    display: flex;
+}
+
+.custom-button {
+    float: right;
+    margin-left: 20px;
+}
+
+/* =========================
+   MOBILE (≤ 576px)
+========================= */
+@media (max-width: 576px) {
+
+    .spical-section1 {
+        padding: 2rem 1rem;
+    }
+
+    .custom_h2 {
+        font-size: 1.6rem;
+    }
+
+    .custom_cardtitle {
+        font-size: 16px;
+    }
+
+    .custom_p {
+        font-size: 14px;
+        line-height: 1.4rem;
+    }
+
+    .custom_card img {
+        height: 160px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .custom-btn,
+    .custom_primbutton {
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin: .5rem;
+    }
+
+    .modal-body img {
+        height: 180px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   TABLET (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+
+    .spical-section1 {
+        padding: 3rem 2rem;
+    }
+
+    .custom_h2 {
+        font-size: 2rem;
+    }
+
+    .custom_card img {
+        height: 180px;
+    }
+
+    .price {
+        font-size: 24px;
+    }
+}
+
+/* =========================
+   LARGE SCREENS (≥ 1200px)
+========================= */
+@media (min-width: 1200px) {
+    .spical-section1 {
+        padding: 4rem 10rem;
+    }
+}

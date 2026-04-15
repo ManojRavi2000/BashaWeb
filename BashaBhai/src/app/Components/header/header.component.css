@@ -1,0 +1,117 @@
+/* ===== Base Styles ===== */
+body {
+  background-color: #F4FDE7;
+  font-family: "Poppins", Lobster;
+}
+
+.custom_nav {
+  background-color: #FFFFFF;
+  padding: 0.2rem 8rem;
+  transition: all 0.3s ease;
+}
+
+.custom_navitem li {
+  margin: 0rem 0.4rem;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav.show > .nav-link {
+  color: #7DA640;
+  font-weight: 600;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-text {
+  font-weight: 600;
+  color: #7c5804;
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* ===== Desktop Hover Effect ===== */
+.custom_navitem .nav-link {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.custom_navitem .nav-link:hover {
+  color: #7DA640;
+}
+
+/* ======= MOBILE RESPONSIVE ======= */
+@media (max-width: 991px) {
+  .custom_nav {
+    padding: 0.5rem 2rem;
+  }
+
+  .navbar-brand img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-text {
+    font-size: 1.5rem;
+  }
+
+  .navbar-collapse {
+    background-color: #FFFFFF;
+    border-top: 1px solid #eee;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .custom_navitem li {
+    margin: 0.6rem 0;
+  }
+
+  .custom_navitem .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f3f3f3;
+    color: #333;
+  }
+
+  .custom_navitem .nav-link.active {
+    color: #7DA640;
+  }
+
+  .icon-container {
+    margin-right: 0.5rem;
+  }
+
+  .icon-container i {
+    font-size: 1.3rem;
+  }
+}
+
+/* ======= SMALL MOBILE (Portrait <576px) ======= */
+@media (max-width: 576px) {
+  .custom_nav {
+    padding: 0.4rem 1rem;
+  }
+
+  .navbar-brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand-text {
+    font-size: 1.2rem;
+  }
+
+  .custom_navitem .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .icon-container i {
+    font-size: 1.2rem;
+  }
+}

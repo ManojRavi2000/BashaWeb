@@ -1,0 +1,210 @@
+<div class="container-fluid spical-section1">
+    <div *ngIf="updateMessage" class="alert alert-success" role="alert">
+        {{ updateMessage }}
+      </div>
+      <div *ngIf="createMessage" class="alert alert-success" role="alert">
+        {{ createMessage }}
+      </div>
+      <div *ngIf="deleteMessage" class="alert alert-success" role="alert">
+        {{ deleteMessage }}
+      </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <button type="button" class="btn custom-btn mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
+                <i class="bi bi-plus-circle"></i> Create Food
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid spical-section">
+    <h2 class="text-center custom_h2 mb-4"> Basha Bai Special Biryani </h2>
+    <div class="row g-4"> <!-- Added g-4 for spacing -->
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let food of foods"> <!-- Adjusted column classes for better responsiveness -->
+            <div class="card text-center custom_card h-100"> <!-- Added h-100 to ensure equal height cards -->
+                <img class="card-img-top" [src]="'data:image/jpeg;base64,' + food.image" alt="Card image" style="width:100%; height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column"> <!-- Added d-flex and flex-column for better content alignment -->
+                    <p class="card-title custom_cardtitle">{{food.foodName}}</p>
+                    <p class="card-text custom_p">{{food.decription}}</p>
+                    <button type="button" class="btn card-button mt-auto" data-bs-toggle="modal" href="#myModal" (click)="getItemById(food.foodId)">
+                        View More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+       
+        <div class="modal-header">
+          <h4 class="price mt-auto">{{name2.foodName}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+   
+        <div class="modal-body">
+            <img class="card-img-top" [src]="'data:image/jpeg;base64,' + name2.image" alt="Card image" style="width:100%; height: 200px; object-fit: cover;">
+            <a class="card-title custom_cardtitle">Price:{{name2.price}} AED</a>
+          <p>{{name2.decription}}</p>
+         <p>{{name2.decription1}}</p>
+         <p>{{name2.decription2}}</p>
+        </div>
+  
+        
+        <div class="modal-footer">
+            <!-- <a type="button" class="btn btn-success" (click)="updateItem(name2.foodId)">Edit</a> -->
+            <a type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Edit</a>
+            <a type="button" class="btn btn-danger"  (click)="deleteItem(name2.foodId)">Delete</a>
+            <!-- <button type="button" class="btn btn-danger"  (click)="deleteItem(name2.foodId)">Delete</button> -->
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Create Modal -->
+<div class="modal" id="createModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Food</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your form for creating a new item goes here -->
+                <form #itemForm="ngForm" id="create" method="POST">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="foodName" [class]="foodName.invalid&& foodName.touched?'is-invalid':''" placeholder="Enter FoodName" name="foodName"  #foodName="ngModel" [(ngModel)]="item.foodName" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="price" [class]="price.invalid&& price.touched?'is-invalid':''" placeholder="Enter Price" name="price"  #price="ngModel" [(ngModel)]="item.price"  pattern="^[0-9]+(\.[0-9]{1,2})?$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="decription" [class]="decription.invalid&& decription.touched?'is-invalid':''" placeholder="Enter Description" name="decription"  #decription="ngModel" [(ngModel)]="item.decription" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="description1" rows="3"  maxlength="200" [class]="decription1.invalid&& decription1.touched?'is-invalid':''" placeholder="Enter Description1" name="decription1"  #decription1="ngModel" [(ngModel)]="item.decription1"  required="true"></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a valid description.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="description2" rows="3"  maxlength="200" [class]="decription2.invalid&& decription2.touched?'is-invalid':''" placeholder="Enter Description2" name="decription2"  #decription2="ngModel" [(ngModel)]="item.decription2"  required="true"></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a valid description.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        
+                        <!-- <label for="file">Upload Image:</label> -->
+                        <input type="file" (change)="onFileSelected($event)" />
+                      </div>
+              
+                    <!-- <div class="mb-3">
+                        <label for="itemImage" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="itemImage"  placeholder="Upload image" name="image"  #image="ngModel" [(ngModel)]="name2.image"  required="true">
+                    </div> -->
+                    <div>
+                        <select class="form-select" aria-label="Default select example" name="categoryId" id="categoryId" #categoryId="ngModel" [(ngModel)]="item.categoryId">
+                            <option value="undefined">Select the Catagory</option>
+                            <option *ngFor="let cat of catagory" [value]="cat.catagoryId">{{ cat.catagory }}</option>
+                        </select>
+                      </div>
+                      <br>
+
+                      <div>
+                        <select class="form-select" aria-label="Default select example" name="restaurantCatagoryId" id="restaurantCatagoryId" #restaurantCatagoryId="ngModel" [(ngModel)]="item.restaurantCatagoryId">
+                            <option value="undefined">Select the Restaurent Catagory</option>
+                            <option *ngFor="let res of restaurentCatagery" [value]="res.restaurantCatagoryId">{{ res.restaurantCatagory }}</option>
+                        </select>
+                      </div>
+                      <!-- <div *ngIf="updateMessage" class="alert alert-success" role="alert">
+                        {{ updateMessage }}
+                      </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="onSubmit(itemForm)">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Update Modal -->
+  <div class="modal" id="updateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Food</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your form for creating a new item goes here -->
+                <form #itemForm="ngForm" id="update" method="POST">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="foodName" [class]="foodName.invalid&& foodName.touched?'is-invalid':''" placeholder="Enter FoodName" name="foodName"  #foodName="ngModel" [(ngModel)]="name2.foodName" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="price" [class]="price.invalid&& price.touched?'is-invalid':''" placeholder="Enter Price" name="price"  #price="ngModel" [(ngModel)]="name2.price"  pattern="^[0-9]+(\.[0-9]{1,2})?$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="decription" [class]="decription.invalid&& decription.touched?'is-invalid':''" placeholder="Enter Description" name="decription"  #decription="ngModel" [(ngModel)]="name2.decription" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxLength="25" required="true">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="description1" rows="3"  maxlength="200" [class]="decription1.invalid&& decription1.touched?'is-invalid':''" placeholder="Enter Description1" name="decription1"  #decription1="ngModel" [(ngModel)]="name2.decription1"  required="true"></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a valid description.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="description2" rows="3"  maxlength="200" [class]="decription2.invalid&& decription2.touched?'is-invalid':''" placeholder="Enter Description2" name="decription2"  #decription2="ngModel" [(ngModel)]="name2.decription2"  required="true"></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a valid description.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                        <img *ngIf="name2.image" [src]="'data:image/jpeg;base64,' + name2.image" 
+                             alt="Item Image" class="img-thumbnail" />
+                        <!-- <label for="file">Upload Image:</label> -->
+                        <input type="file" (change)="onFileUpdate($event)" />
+                    </div>
+                      </div>
+               
+                    <div>
+                        <select class="form-select" aria-label="Default select example" name="categoryId" id="categoryId" #categoryId="ngModel" [(ngModel)]="name2.categoryId">
+                            <option value="undefined">Select the Catagory</option>
+                            <option *ngFor="let cat of catagory" [value]="cat.catagoryId">{{ cat.catagory }}</option>
+                        </select>
+                      </div>
+
+                      <br>
+
+                       <div>
+                        <select class="form-select" aria-label="Default select example" name="restaurantCatagoryId" id="restaurantCatagoryId" #restaurantCatagoryId="ngModel" [(ngModel)]="name2.restaurantCatagoryId">
+                            <option value="undefined">Select the Catagory</option>
+                            <option *ngFor="let res of restaurentCatagery" [value]="res.restaurantCatagoryId">{{ res.restaurantCatagory }}</option>
+                        </select>
+                      </div>
+                
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="updateItem(name2.foodId)">update</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,73 @@
+<div class="background">
+  <div class="flex-container">
+
+    <!-- LEFT IMAGE (hidden on mobile) -->
+    <img
+      src="assets/img/loginsideright.png"
+      alt="Login Image"
+      class="side-img left-img"
+    />
+
+    <!-- LOGIN FORM -->
+    <form
+      (ngSubmit)="loginsubmit()"
+      #loginForm="ngForm"
+      class="login-form"
+    >
+      <h2>Login</h2>
+
+      <!-- USERNAME -->
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="UserName / Email"
+          name="userName"
+          [(ngModel)]="login.userName"
+          #email="ngModel"
+          required
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="error-message"
+        >
+          UserName / Email is required
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="login.password"
+          #password="ngModel"
+          required
+          minlength="6"
+        />
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="error-message"
+        >
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <a routerLink="/register" class="login-link">
+        Don't have an account? Sign up
+      </a>
+    </form>
+
+    <!-- RIGHT IMAGE (hidden on mobile) -->
+    <img
+      src="assets/img/loginside.png"
+      alt="Login Image"
+      class="side-img right-img"
+    />
+
+  </div>
+</div>

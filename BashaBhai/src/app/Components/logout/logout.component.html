@@ -1,0 +1,52 @@
+<div class="container-fluid spical-section1">
+  <div class="container-fluid">
+
+    <!-- LOGOUT BUTTON -->
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <button type="button" class="btn custom-btn mb-3" (click)="logOut()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
+    </div>
+
+    <h1 class="text-center text-white mb-3">User Details</h1>
+
+    <!-- DESKTOP TABLE -->
+    <div class="table-container d-none d-md-block" *ngIf="userDetail">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Mobile Number</th>
+            <td>{{ userDetail.mobileNumber }}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{ userDetail.email }}</td>
+          </tr>
+          <tr>
+            <th>Role</th>
+            <td>{{ userDetail.roles }}</td>
+          </tr>
+          <tr *ngIf="userDetail.restaurantId">
+            <th>Restaurant ID</th>
+            <td>{{ userDetail.restaurantId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MOBILE CARD VIEW -->
+    <div class="d-block d-md-none" *ngIf="userDetail">
+      <div class="profile-card">
+        <p><i class="bi bi-person-circle"></i> <b>Mobile:</b> {{ userDetail.mobileNumber }}</p>
+        <p><i class="bi bi-envelope-at"></i> <b>Email:</b> {{ userDetail.email }}</p>
+        <p><i class="bi bi-person-badge"></i> <b>Role:</b> {{ userDetail.roles }}</p>
+        <p *ngIf="userDetail.restaurantId">
+          <i class="bi bi-shop"></i> <b>Restaurant ID:</b> {{ userDetail.restaurantId }}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

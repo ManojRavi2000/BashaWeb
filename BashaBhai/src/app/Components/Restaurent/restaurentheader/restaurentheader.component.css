@@ -1,0 +1,47 @@
+/* Lobster */
+body {
+    background-color: #F4FDE7;
+    font-family: "Poppins", Lobster;
+}
+
+.custom_nav {
+    background-color: #FFFFFF;
+    padding: 0.2rem 8rem;
+    /* height: 60px; */
+}
+
+.custom_navitem li {
+    margin: 0rem 0.4rem;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav.show > .nav-link {
+    color: #7DA640;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 0.5rem; */
+}
+
+.brand-text {
+    
+    font-weight: 600; /* Adjust font weight */
+   
+
+    color: #7c5804;
+    font-family:Lobster;
+    font-size:2rem;
+    
+}
+
+
+
+
+
+
+
+
+
+

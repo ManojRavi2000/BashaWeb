@@ -1,0 +1,184 @@
+<div class="container-fluid hero-section">
+    <div class="row">
+        <div class="col-sm-6">
+            <p class="custom_pill"> Taste of madras </p>
+            <h1 class="custom_h1"> Choosing The <br/>Best <span class="tow_color"> Quality Food</span> </h1>
+            <p class="custom_p"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+            <button class="btn custom_primbutton" (click)="redirectToWhatsApp()"> Book table </button>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            <!-- <img src="assets/img/Homepot1.png" width="520" />  -->
+               <img src="assets/img/HomeImage.png" width="420" />
+         </div>
+    </div>
+</div>
+
+
+<div class="container-fluid spical-section">
+  <!-- Title -->
+  <h2 class="custom_h2">Basha Bhai Special Biryani</h2>
+
+  <!-- Scroll Wrapper (Mobile Only) -->
+  <div class="scroll-wrapper">
+    <div class="scroll-content">
+
+      <!-- Card -->
+      <div *ngFor="let item of specialFoods" class="card-container">
+        <div class="card custom_card h-100 text-center d-flex flex-column">
+
+          <!-- Image -->
+             <img class="card-img-top food-img" [src]="'data:image/jpeg;base64,' + (item.image || '')" alt="Card image">
+
+          <!-- Body -->
+          <div class="card-body d-flex flex-column">
+            <p class="custom_cardtitle">{{ item.foodName }}</p>
+            <p class="custom_p">{{ item.decription }}</p>
+
+            <button
+              class="btn card-button mt-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+              (click)="getItemById(item.foodId)">
+              View More
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+       
+        <div class="modal-header">
+          <h4 class="price mt-auto">{{name2.foodName}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+   
+        <div class="modal-body">
+            <img class="card-img-top" [src]="'data:image/jpeg;base64,' + name2.image" alt="Card image" style="width:100%; height: 200px; object-fit: cover;">
+            <a class="card-title custom_cardtitle">Price:{{name2.price}} AED</a>
+          <p>{{name2.decription}}</p>
+         <p>{{name2.decription1}}</p>
+         <p>{{name2.decription2}}</p>
+        </div>
+  
+        
+        <div class="modal-footer">
+            <a type="button" class="btn btn-success" href="https://food.noon.com/outlet/BSHBHBC3Q3/">Order now</a>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+ <!-- ================= MENU SECTION ================= -->
+<div
+  class="menu-section"
+  style="background:#F4FDE7 url('/assets/img/leaf1.png') no-repeat top right;"
+>
+
+  <h2 class="text-center custom_h2 mb-4">Our Menu</h2>
+
+  <!-- ================= CATEGORY SCROLL ================= -->
+  <div class="category-scroll-container">
+
+    <!-- LEFT ARROW -->
+    <button class="scroll-btn left" (click)="scrollLeft()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div class="category-scroll-wrapper" #scrollContainer>
+      <ul class="nav nav-pills flex-nowrap">
+
+        <li
+          class="nav-item text-center"
+          *ngFor="let c of catagory">
+
+          <a
+  class="nav-link"
+  [class.active]="c === selectedCategory"
+  (click)="selectedCategory = c; getDinner(c.catagoryId)"
+>
+
+            <!-- CATEGORY IMAGE -->
+            <img
+              *ngIf="c.image"
+               [src]="'data:image/jpeg;base64,' + c.image"
+              class="category-icon mb-1">
+
+            <!-- FALLBACK ICON -->
+            <i *ngIf="!c.image" class="bi bi-egg-fried fs-4 mb-1"></i>
+
+            <span>{{ c.catagory }}</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="scroll-btn right" (click)="scrollRight()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+
+  </div>
+
+  <!-- ================= FOOD LIST ================= -->
+  <div class="row mt-3">
+
+    <div
+      class="col-lg-3 col-md-4 col-sm-6 mb-3"
+      *ngFor="let food of name1">
+
+      <div class="card h-100 text-center shadow-sm">
+
+        <!-- FOOD IMAGE -->
+        <img
+          [src]="'data:image/jpeg;base64,' + food.image"
+          class="card-img-top"
+          alt="{{ food.foodName }}"
+          style="height:180px; object-fit:cover">
+
+        <div class="card-body d-flex flex-column">
+
+          <h5 class="card-title">{{ food.foodName }}</h5>
+
+          <p class="card-text">
+            {{ food.decription }}
+          </p>
+
+          <p class="card-text fw-bold">
+            {{ food.price }} AED
+          </p>
+
+          <!-- <button
+            class="btn card-button mt-auto"
+            data-bs-toggle="modal"
+            data-bs-target="#itemModal"
+            (click)="getItemById(food.foodId)">
+            View More
+          </button> -->
+
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE -->
+
+
+  </div>
+</div>
+
+
+
+
+
+

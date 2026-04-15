@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BashaBhai';
+  role:any;
+  ngDoCheck(){
+
+    
+    if(localStorage.getItem('myRole')){
+  
+      this.role=localStorage.getItem('myRole');
+    }
+  }
 }

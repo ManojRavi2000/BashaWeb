@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg custom_nav">
+    <div class="container-fluid">
+          <!-- <h2 class="text-center mb-4">    <li>
+     <img src="assets/img/headerlogo.png" width="95" height="85" alt="Basha Bhai Biryani" data-retina="true">
+    </li>Basha Bhai Biryani Menu</h2> -->
+    <!-- <h2 class="text-center mb-4">
+         <img src="assets/img/headerlogo.png" width="95" height="85" alt="Basha Bhai Biryani" data-retina="true">
+                Basha Bhai Biryani    
+    </h2> -->
+    <h2 class="text-center mb-4">
+         <img src="assets/img/newlogo.png" width="110" height="100" alt="Basha Bhai Biryani" data-retina="true">
+              
+    </h2>
+         <!-- <a routerLink="/">
+            <img src="assets/img/headerlogo.png" width="95" height="85" alt="Basha Bhai Biryani" data-retina="true">
+            <span class="brand-text ms-2" >
+                Basha Bhai Biryani
+            </span>
+            
+        </a>  -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ms-auto custom_navitem">
+                <li class="nav-item" *ngFor="let link of navLinks">
+                   <a class="nav-link"
+   [routerLink]="link.url"
+   [ngClass]="{'active': link.active}"
+   [ngStyle]="{'font-weight': link.fontWeight}"
+   (click)="setActive(link)">
+
+                        <div *ngIf="link.name === 'Home'" class="icon-container">
+                            <i class="bi bi-house-fill"></i>
+                        </div>
+                        <div *ngIf="link.name === 'About us'" class="icon-container">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </div>
+                        <div *ngIf="link.name === 'Shop'" class="icon-container">
+                            <i class="bi bi-cart-fill"></i>
+                        </div>
+                        <div *ngIf="link.name === 'Item'" class="icon-container">
+                          <i class="bi bi-bag-fill"></i>
+                        </div>
+                        <div *ngIf="link.name === 'Contact Us'" class="icon-container">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <div *ngIf="link.name === 'Login'" class="icon-container">
+                            <i class="bi bi-person"></i>
+                            <!-- <i class="bi bi-box-arrow-in-right"></i> -->
+                        </div>
+                        {{ link.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

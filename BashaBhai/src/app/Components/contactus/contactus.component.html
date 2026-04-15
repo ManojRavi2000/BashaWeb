@@ -1,0 +1,91 @@
+<div class="baground">
+<div class="row">
+  <div class="col-sm-8">
+    <h2>Feedback</h2>
+
+    <form #feedbackForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control"
+            placeholder="Enter Name"
+            name="name"
+            [(ngModel)]="feedbacks.name"
+            required>
+        </div>
+
+        <div class="col">
+          <input type="email" class="form-control"
+            placeholder="Enter Email"
+            name="email"
+            [(ngModel)]="feedbacks.email">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control"
+            placeholder="Enter PhoneNo"
+            name="phoneNo"
+            [(ngModel)]="feedbacks.phoneNo">
+        </div>
+
+        <div class="col">
+          <select class="form-select"
+            name="feedBack"
+            [(ngModel)]="feedbacks.feedBack">
+            <option value="">Select the Feedback</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Bad">Bad</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col">
+          <textarea class="form-control"
+            rows="3"
+            placeholder="Enter Message"
+            name="message"
+            [(ngModel)]="feedbacks.message">
+          </textarea>
+        </div>
+      </div>
+
+      <br>
+
+      <button class="btn btn-success" type="submit">
+        Submit
+      </button>
+
+    </form>
+  </div>
+
+
+    <!-- ContactUs -->
+    <!-- &nbsp; == For Space -->
+    <div class="col-sm-4">
+      <h2>Contact Info</h2>
+        <!-- <p><i class="bi bi-person"></i>&nbsp;
+          {{contacts.contactName}}</p> -->
+        <p> <i class="bi bi-telephone"></i>&nbsp;
+           <strong> +971 52 860 1100,</strong></p>
+          <p> <i class="bi bi-phone"></i>&nbsp;
+            <strong> +971 52 803 1100</strong></p>
+          <p>
+            <!-- <i class="bi bi-envelope"></i>&nbsp;
+            {{contacts.email}}</p> -->
+        <p><i class="bi bi-geo-alt"></i>&nbsp;
+          <strong> Wasl Hub Block 4, AI Karama,</strong></p>
+        <p>  <strong> Dubai-UAE </strong></p>
+        
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,83 @@
+/* Default footer style (already fine for desktop) */
+.footer-section {
+    background: #222;
+    padding: 4rem 8rem;
+    color: #FFFFFF;
+}
+
+.footer-section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 22px;
+}
+
+.footer-section ul {
+    padding: 0px;
+}
+
+.footer-section li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 2rem;
+}
+
+.footer-section li a:hover {
+    color: #7DA640;
+}
+
+.copyright {
+    color: #8B8B8B;
+}
+
+/* ✅ Responsive Design for Tablets and Mobiles */
+@media (max-width: 991px) {
+    .footer-section {
+        padding: 2rem 3rem;
+        text-align: center;
+    }
+
+    .footer-section .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section .col-sm-3 {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .footer-section iframe {
+        height: 200px;
+    }
+
+    .footer-section h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-section {
+        padding: 1.5rem;
+    }
+
+    .footer-section h3 {
+        font-size: 18px;
+    }
+
+    .footer-section ul {
+        padding: 0;
+    }
+
+    .footer-section li a {
+        font-size: 15px;
+        line-height: 1.8rem;
+    }
+
+    .footer-section iframe {
+        height: 180px;
+    }
+
+    .copyright p {
+        font-size: 13px;
+    }
+}

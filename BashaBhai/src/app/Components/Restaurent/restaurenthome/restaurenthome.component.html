@@ -1,0 +1,193 @@
+<div class="container-fluid spical-section1">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <button type="button" class="btn custom-btn mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
+                <i class="bi bi-plus-circle"></i> Create RestaurantCatagory
+            </button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2 class="text-center custom_h2 mb-4">RestaurantCatagory List</h2>
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>RESTAURANTCATEGORY ID</th>
+          <th>RESTAURANTCATEGORY Name</th>
+       
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cata of restaurentCatageryList">
+          <td>{{ cata.restaurantCatagoryId }}</td>
+     
+
+          <td>{{ cata.restaurantCatagory }}</td>
+          <td>
+            <button
+              class="btn btn-info"
+              data-bs-toggle="modal"
+              data-bs-target="#updateModal"
+              (click)="getCatagoryById(cata.restaurantCatagoryId)"
+            >
+              Update
+            </button>
+            <button
+              class="btn btn-danger"
+              style="margin-left: 10px"
+              (click)="deleteCatagory(cata.restaurantCatagoryId)"
+            >
+              Delete
+            </button>
+            <button
+              class="btn btn-info"
+              style="margin-left: 10px"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+              (click)="getCatagoryById(cata.restaurantCatagoryId)"
+            >
+              View
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+<div>
+    <h2 class="text-center custom_h2 mb-4">Category List</h2>
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>CATEGORY ID</th>
+             <th>IMAGES</th>
+          <th>CATEGORY Name</th>
+       
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of catagory1">
+          <td>{{ cat.catagoryId }}</td>
+         <td>
+  <img
+    *ngIf="cat.image; else noImg"
+    [src]="'data:image/jpeg;base64,' + cat.image"
+    class="category-icon"
+    alt="Category Image"
+  />
+  <ng-template #noImg>
+    <span class="text-muted">No Image</span>
+  </ng-template>
+</td>
+
+          <td>{{ cat.catagory }}</td>
+          <td>
+            <button
+              class="btn btn-info"
+              data-bs-toggle="modal"
+              data-bs-target="#updateModal"
+              (click)="getCatagoryById(cat.catagoryId)"
+            >
+              Update
+            </button>
+            <button
+              class="btn btn-danger"
+              style="margin-left: 10px"
+              (click)="deleteCatagory(cat.catagoryId)"
+            >
+              Delete
+            </button>
+            <button
+              class="btn btn-info"
+              style="margin-left: 10px"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+              (click)="getCatagoryById(cat.catagoryId)"
+            >
+              View
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  
+</div>
+
+<div class="modal" id="createModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New RestaurantCatagery</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="saveCatagory()" #restaurantCatagoryForm="ngForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="restaurantCatagery" [class]="restaurantCatagory.invalid&& restaurantCatagory.touched?'is-invalid':''"
+                            placeholder="Enter restaurantCatagery" name="restaurantCatagery" required="true"
+                            pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxlength="25" [(ngModel)]="restaurantCatagery.restaurantCatagory" #restaurantCatagory="ngModel">
+                        <div *ngIf="catagory.invalid && restaurantCatagory.touched" class="invalid-feedback">
+                            Please enter a valid category name.
+                        </div>
+                    </div>
+                        
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" [disabled]="restaurantCatagory.invalid">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="updateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form  #categoryForm="ngForm" id="update" method="POST">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="catagory" [class]="catagory.invalid&& catagory.touched?'is-invalid':''"
+                            placeholder="Enter catagory" name="catagory"
+                            pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" maxLength="25" required="true" [(ngModel)]="viewCaegory.catagory" #catagory="ngModel">
+                        <div *ngIf="catagory.invalid && catagory.touched" class="invalid-feedback">
+                            Please enter a valid category name.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" (click)="updateCatagory(viewCaegory.catagoryId)">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="price mt-auto">{{viewCaegory.catagory}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-footer">  
+            
+            <!-- <button type="button" class="btn btn-danger"  (click)="deleteItem(name2.foodId)">Delete</button> -->
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>

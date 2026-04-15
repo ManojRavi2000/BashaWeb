@@ -1,0 +1,124 @@
+/* ===============================
+   GENERAL FORM STYLING
+================================ */
+form {
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* ===============================
+   ROW & COLUMN SPACING
+================================ */
+.row {
+    margin-bottom: 15px;
+}
+
+.col {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* ===============================
+   INPUTS & SELECT
+================================ */
+.form-control,
+.form-select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+/* ===============================
+   BUTTON STYLING
+================================ */
+.btn-success {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.btn-success:hover {
+    background-color: #1ebe5d;
+}
+
+/* ===============================
+   BACKGROUND SECTION
+================================ */
+.baground {
+    background: url(../../../assets/img/feedback1.jpg) no-repeat center center;
+    background-size: cover;
+    padding: 8rem 8rem;
+}
+
+/* ===============================
+   HEADING
+================================ */
+h2 {
+    text-align: center;
+    color: #7DA640;
+    margin-bottom: 25px;
+}
+
+/* =====================================================
+   📱 MOBILE RESPONSIVE (PHONES)
+===================================================== */
+@media (max-width: 576px) {
+
+    .baground {
+        padding: 3rem 1rem;
+        background-attachment: scroll;
+    }
+
+    form {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .row {
+        margin-bottom: 12px;
+    }
+
+    .col {
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn-success {
+        width: 100%;
+        float: none;
+        text-align: center;
+        padding: 12px;
+        border-radius: 8px;
+    }
+}
+
+/* =====================================================
+   📱📱 TABLET RESPONSIVE
+===================================================== */
+@media (min-width: 577px) and (max-width: 992px) {
+
+    .baground {
+        padding: 4rem 3rem;
+    }
+
+    .btn-success {
+        float: right;
+    }
+}

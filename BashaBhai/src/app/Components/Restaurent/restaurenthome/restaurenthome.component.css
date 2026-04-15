@@ -1,0 +1,168 @@
+.spical-section1{
+    background: url('/assets/img/adminhomebg1.jpg') no-repeat;
+    background-size: cover;
+    padding:4rem 8rem;
+}
+
+.modal-content{
+    background: url('/assets/img/im5.jpg') no-repeat;
+    /* background:url(../../../assets/img/im5.jpg) no-repeat; */
+    background-size: cover;
+}
+
+.custom_h2{
+    font-family:Lobster;
+    font-size:2.5rem;
+    color: #7DA640;
+}
+.category-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+
+.custom-button {
+    float: right; /* Float the button to the right */
+    margin-left: 20px; /* Optional: Adjust margin for spacing from the left */
+}
+
+.custom-btn {
+    background-color: #7DA640; /* Example background color */
+    border-color: #7DA640; /* Matches the border color to the background */
+    color: #fff; /* Text color */
+}
+
+.custom-btn:hover {
+    background-color: #c7a200; /* Example hover background color */
+    border-color: #c7a200; /* Matches the border color to the hover background */
+}
+
+/* Styles for the h2 header */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Styles for the table */
+.table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table thead {
+    background-color: #f8f8f8;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Styles for the buttons */
+.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Additional spacing between buttons */
+.btn + .btn {
+    margin-left: 10px;
+}
+/* ---------- Responsive tweaks ---------- */
+
+/* Tablets & below */
+@media (max-width: 992px) {
+  .spical-section1 {
+    padding: 2rem 3rem;
+  }
+
+  .custom_h2 {
+    font-size: 2rem;
+  }
+
+  .category-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 576px) {
+
+  .spical-section1 {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Table responsiveness */
+  .table {
+    font-size: 13px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Stack action buttons */
+  td .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+  td .btn + .btn {
+    margin-left: 0;
+  }
+
+  /* Header button alignment */
+  .custom-button,
+  .custom-btn {
+    width: 100%;
+    float: none;
+  }
+
+  /* Modal fixes */
+  .modal-dialog {
+    margin: 1rem;
+  }
+
+  .modal-content {
+    background-position: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
