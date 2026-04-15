@@ -1,0 +1,12 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/contact",
+    "/login",
+    "/logout",
+    "/restaurenthome",
+    "/restaurentitem",
+    "/shop"
+  ]
+}
