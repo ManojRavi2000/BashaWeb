@@ -63,7 +63,7 @@
 
 
 .aremenu-section {
-    background: #F4FDE7 url('../../../assets/img/leaf 1.png') no-repeat top right 80px;
+    background: #F4FDE7 url('/assets/img/leaf 1.png') no-repeat top right 80px;
     background-size: 130px;
     padding: 4rem 8rem;
     position: relative;
