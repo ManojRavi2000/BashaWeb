@@ -17,6 +17,8 @@ export class RestaurentitemsComponent {
    name2=new Item();
   catagory?:Catagery[];
   foods!:Item[];
+   currentPage = 0;
+  pageSize = 12;
   restaurentCatagery?:Restaurentcatagery[];
   selectedFile: File | null = null;
   updateFile: File | null = null;
@@ -49,7 +51,7 @@ export class RestaurentitemsComponent {
 
   ngOnInit(): void {
     this.getcatagory();
-    this.getAllItem();
+    this.loadFoods();
     this.getrescatagory();
 
     const message = localStorage.getItem('deleteMessage');
@@ -103,14 +105,55 @@ export class RestaurentitemsComponent {
   });
   }
 
-  getAllItem(){
-    this.service.viewAllItem().subscribe(data=>{
-      console.log(data);
-      this.foods=data;
-    });
-    (error: any)=>console.log(error);
+    loadFoods(): void {
+
+    this.service
+      .viewAllItem(this.currentPage, this.pageSize)
+      .subscribe({
+
+        next: (response: Item[]) => {
+
+          console.log(response);
+
+          this.foods = response;
+
+          console.log(this.foods);
+
+        },
+
+        error: (err) => {
+          console.log(err);
+        }
+
+      });
+
   }
 
+  nextPage(): void {
+
+    this.currentPage++;
+
+    this.loadFoods();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  }
+
+  previousPage(): void {
+
+    if (this.currentPage > 0) {
+
+      this.currentPage--;
+
+      this.loadFoods();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+    }
+
+  }
   getItemById(id:any){
     debugger
     this.service.getItemById(id).subscribe(

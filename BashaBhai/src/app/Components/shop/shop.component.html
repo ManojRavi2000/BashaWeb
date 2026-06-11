@@ -11,9 +11,7 @@
       *ngFor="let food of foods">
 
       <div class="card text-center custom_card h-100">
-
-        <img class="card-img-top" [src]="'data:image/jpeg;base64,' + food.image" alt="Card image" style="width:100%; height: 200px; object-fit: cover;">
-
+   <img class="card-img-top" [src]="'data:image/jpeg;base64,'+food.image" alt="Card image" style="width:100%; height: 200px; object-fit: cover;">
         <div class="card-body d-flex flex-column">
           <p class="card-title custom_cardtitle">
             {{ food.foodName }}
@@ -42,38 +40,53 @@
   </div>
 
 
-  <p *ngIf="foods.length === 0" class="text-center text-muted mt-4">
-    No items available
-  </p>
+ <p *ngIf="!foods || foods.length === 0"
+   class="text-center text-muted mt-4">
+  No items available
+</p>
 
  
-  <nav *ngIf="totalPages > 1" class="mt-5">
-    <ul class="pagination justify-content-center">
+ <nav class="mt-4">
 
-      <li class="page-item" [class.disabled]="currentPage === 1">
-        <button class="page-link" (click)="changePage(currentPage - 1)">
-          Previous
-        </button>
-      </li>
+  <ul class="pagination justify-content-center">
 
-      <li
-        class="page-item"
-        *ngFor="let page of [].constructor(totalPages); let i = index"
-        [class.active]="currentPage === i + 1">
+    <li class="page-item">
 
-        <button class="page-link" (click)="changePage(i + 1)">
-          {{ i + 1 }}
-        </button>
-      </li>
+      <button
+      class="page-link"
+      (click)="previousPage()">
 
-      <li class="page-item" [class.disabled]="currentPage === totalPages">
-        <button class="page-link" (click)="changePage(currentPage + 1)">
-          Next
-        </button>
-      </li>
+      Previous
 
-    </ul>
-  </nav>
+      </button>
+
+    </li>
+
+    <li class="page-item">
+
+      <span class="page-link">
+
+        Page {{currentPage + 1}}
+
+      </span>
+
+    </li>
+
+    <li class="page-item">
+
+      <button
+      class="page-link"
+      (click)="nextPage()">
+
+      Next
+
+      </button>
+
+    </li>
+
+  </ul>
+
+</nav>
 </div>
 
 <div class="modal fade" id="myModal">

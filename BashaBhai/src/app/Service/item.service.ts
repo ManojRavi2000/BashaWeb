@@ -42,11 +42,17 @@ export class ItemService {
     return this.httpClient.get(AUTH_API2+`/getallcatagory/${id}`);
   }
 
-      viewAllItem():Observable<Item[]>{
-        debugger
-        return this.httpClient.get<Item[]>(AUTH_API+'/getfoodbyrestaurantid/1');
-      }
+      // viewAllItem():Observable<Item[]>{
+      //   debugger
+      //   return this.httpClient.get<Item[]>(AUTH_API+'/getfoodbyrestaurantid/1');
+      // }
 
+     viewAllItem(page: number = 0, size: number = 10): Observable<any> {
+  return this.httpClient.get<any>(
+    `${AUTH_API}/getfoodbyrestaurantid/1?page=${page}&size=${size}`
+  );
+}
+// /getfoodbyrestaurantid/1?page=0&size=10
       createItem(item:Item,file: File):Observable<any>{
         debugger
     const formData: FormData = new FormData();

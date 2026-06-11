@@ -271,3 +271,38 @@ textarea {
         padding: 4rem 10rem;
     }
 }
+
+.pagination .page-link {
+  color: #7DA640;              /* text color */
+  border: 1px solid #7DA640;
+  background-color: #ffffff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.pagination .page-link:hover {
+  background-color: #7DA640;
+  color: #ffffff;
+  border-color: #7DA640;
+}
+
+/* Active page */
+.pagination .page-item.active .page-link {
+  background-color: #7DA640;
+  border-color: #7DA640;
+  color: #ffffff;
+}
+
+/* Disabled state */
+.pagination .page-item.disabled .page-link {
+  background-color: #f1f1f1;
+  color: #999999;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}
+
+/* Remove focus shadow */
+.pagination .page-link:focus {
+  box-shadow: none;
+}

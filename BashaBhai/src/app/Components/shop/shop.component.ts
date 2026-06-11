@@ -11,16 +11,13 @@ import { ItemService } from '../../Service/item.service';
 })
 export class ShopComponent {
 
-  currentPage: number = 1;
-  itemsPerPage: number = 16;
-  totalPages: number = 0;
+  foods: Item[] = [];
+  catagory: Catagery[] = [];
 
-  name2 = new Item();
+  name2: Item = new Item();
 
-  catagory?: Catagery[];
-
-  allFoods: Item[] = [];   // 🔥 full list
-  foods: Item[] = [];      // 🔥 paginated list
+  currentPage = 0;
+  pageSize = 12;
 
   constructor(
     private service: ItemService,
@@ -28,62 +25,88 @@ export class ShopComponent {
   ) {}
 
   ngOnInit(): void {
+
     this.getcatagory();
-    this.getAllItem();
+    this.loadFoods();
+
   }
 
-  getcatagory() {
+  getcatagory(): void {
+
     this.service.viewcatagory().subscribe({
       next: (data) => {
         this.catagory = data;
       },
-      error: (err) => console.error(err)
+      error: (err) => {
+        console.log(err);
+      }
     });
+
   }
 
-  getAllItem() {
-    this.service.viewAllItem().subscribe({
-      next: (data) => {
-        this.allFoods = data;
+  loadFoods(): void {
 
-        // ✅ calculate total pages
-        this.totalPages = Math.ceil(
-          this.allFoods.length / this.itemsPerPage
-        );
+    this.service
+      .viewAllItem(this.currentPage, this.pageSize)
+      .subscribe({
 
-        // ✅ load first page
-        this.applyPagination();
-      },
-      error: (err) => console.error(err)
-    });
-  }
+        next: (response: Item[]) => {
 
-  getItemById(id: number) {
-    this.service.getItemById(id).subscribe({
-      next: (data) => {
-        this.name2 = data;
-      },
-      error: (err) => console.error(err)
-    });
-  }
+          console.log(response);
 
-  applyPagination(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
+          this.foods = response;
 
-    this.foods = this.allFoods.slice(startIndex, endIndex);
-  }
+          console.log(this.foods);
 
-  changePage(page: number): void {
-    if (page >= 1 && page <= this.totalPages) {
-      this.currentPage = page;
-      this.applyPagination();
+        },
 
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        error: (err) => {
+          console.log(err);
+        }
+
       });
-    }
+
   }
 
+  nextPage(): void {
+
+    this.currentPage++;
+
+    this.loadFoods();
+
+  }
+
+  previousPage(): void {
+
+    if (this.currentPage > 0) {
+
+      this.currentPage--;
+
+      this.loadFoods();
+
+    }
+
+  }
+
+  getItemById(id: number): void {
+
+    this.service
+      .getItemById(id)
+      .subscribe({
+
+        next: (data) => {
+
+          this.name2 = data;
+
+        },
+
+        error: (err) => {
+
+          console.log(err);
+
+        }
+
+      });
+
+  }
 }
