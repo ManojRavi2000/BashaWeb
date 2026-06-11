@@ -73,6 +73,10 @@ export class ShopComponent {
     this.currentPage++;
 
     this.loadFoods();
+      window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
   }
 
@@ -83,6 +87,11 @@ export class ShopComponent {
       this.currentPage--;
 
       this.loadFoods();
+
+        window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
     }
 
